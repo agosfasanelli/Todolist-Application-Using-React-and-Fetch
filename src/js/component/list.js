@@ -1,21 +1,24 @@
 import propTypes from "prop-types";
-import React from "react";
-import React, { useState } from 'react'
+import React, { useState } from "react";
 
-const List = () => {
 
-    const [tarea, setTarea] = useState()
+const List = (props) => {
 
-    return (
+    const [tarea, setTarea] = useState("nueva tarea")
+   
+
+        return (
         <div>
             <ul className="list-group">
             <li className="list-group-item">
-            <input type="text" class="form-control" placeholder="Que necesitas hacer hoy?" aria-label="Username"/>
+            <input type="text" className="form-control" placeholder= {props.text} aria-label="Username"/>
             </li>
-            <li submit= {() => setTarea(tarea)}>
-
+            <li className="list-group-item">
+                {tarea}
             </li>
-            
+            <li className="list-group-item">
+                {props.alert}
+            </li>
             </ul>
         </div>
     )
