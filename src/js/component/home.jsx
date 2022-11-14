@@ -12,7 +12,6 @@ const Home = () => {
 				<List 
 				text= "Que necesitas hacer hoy?"
 				alert = "No tienes ningun pendiente"
-				
 				/>	
 			</div>		
 		</div>
