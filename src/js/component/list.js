@@ -27,14 +27,17 @@ const List = (props) => {
             onChange={(event) => setTask(event.target.value)}
             onKeyDown = {(event) => event.key == "Enter" ? counter() : ""}
             />
-            </li>
+             </li>
             {countTask == 0 ? <li className="list-group-item">{props.alert}</li> : listOfTask.map((oneTask, index) => {
                 return (
+                    <>
                     <li className="list-group-item" >    
-                    {oneTask}
-                    <button type="button" class="btn-close" aria-label="Close"
+                    {oneTask === "" ? null : {oneTask}}
+                    <button type="button" className="btn-close" aria-label="Close"
                     onClick={() => deleteTask(index)}></button>    
                     </li>
+                    <p>{setCountTask > 1 ? `tienes ${setCountTask} tareas pendientes` : ""}</p>
+                    </>
                 )
             })}
             </ul>
