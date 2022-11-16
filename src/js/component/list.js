@@ -5,13 +5,16 @@ import React, { useState } from "react";
 const List = (props) => {
 
     const [listOfTask, setListOfTask] = useState([])
-   const [task, setTask] = useState ()
+   const [task, setTask] = useState ("")
    const [countTask, setCountTask] = useState (0)
    const counter = () => {
-    setListOfTask([...listOfTask, task])
-    setCountTask (countTask + 1)
-   }
+    if (task != ""){
+        setListOfTask([...listOfTask, task])
+        setCountTask (countTask + 1)
+        }
+    }
    const deleteTask = (index) => {
+    setCountTask (countTask -1) 
     setListOfTask(listOfTask.filter((oneTask, i) => i != index))
    }
 
@@ -28,19 +31,18 @@ const List = (props) => {
             onKeyDown = {(event) => event.key == "Enter" ? counter() : ""}
             />
              </li>
-            {countTask == 0 ? <li className="list-group-item">{props.alert}</li> : listOfTask.map((oneTask, index) => {
+            {listOfTask.map((oneTask, index) => {
                 return (
-                    <>
-                    <li className="list-group-item" >    
-                    {oneTask === "" ? null : {oneTask}}
-                    <button type="button" className="btn-close" aria-label="Close"
+                    <li key={index} className="list-group-item" >    
+                    {oneTask}
+                    <button type="button" className="btn-close fs-6 float-end me-0" aria-label="Close"
                     onClick={() => deleteTask(index)}></button>    
                     </li>
-                    <p>{setCountTask > 1 ? `tienes ${setCountTask} tareas pendientes` : ""}</p>
-                    </>
                 )
             })}
+                <li className="list-group-item fs-6 text-secondary">{countTask >= 1 ? `tienes ${countTask} tareas pendientes` : props.alert}</li>
             </ul>
+            
         </div>
     )
 }
