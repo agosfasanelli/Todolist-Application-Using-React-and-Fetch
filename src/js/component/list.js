@@ -8,12 +8,10 @@ const List = () => {
 
     useEffect (() => {
 
-        fetch ('http://assets.breatheco.de/apis/fake/todos/user/agosfasanelli',{
-        method: "GET",
-    })
+        fetch ('http://assets.breatheco.de/apis/fake/todos/user/agosfasanelli')
         .then ((response) => {
             return response.json()
-        }).then (() => {
+        }).then ((response) => {
             console.log ("la respuesta es: ", response) 
             setListOfTask (response.result)
         })
