@@ -6,13 +6,10 @@ const Home = () => {
 
 
 	return (
-		<div className="text-center">
+		<div className="text-center mt-3">
 			<h1>To Do List</h1>
-			<div className="col-4 mx-auto">
-				<List 
-				text = "Que necesitas hacer hoy?"
-				alert = "Sin pendientes"
-				/>	
+			<div className="col-7 col-md-4 mx-auto mt-3 text-center">
+				<List />	
 			</div>		
 		</div>
 	);
